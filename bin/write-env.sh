@@ -23,12 +23,12 @@ if [ ! -f ${CONF_DIR}/mongo.env ]; then
   if [ -z ${MONGO_USER} ]; then
     echo "#MONGO_USER=" >> ${CONF_DIR}/mongo.env
   else
-    echo "MONGO_USER=${MONGO_USER}" >> ${CONF_DIR}/mongo.env
+    echo "MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}" >> ${CONF_DIR}/mongo.env
   fi
   if [ -z ${MONGO_PASS} ]; then
     echo "#MONGO_PASS=" >> ${CONF_DIR}/mongo.env
   else
-    echo "MONGO_PASS=${MONGO_PASS}" >> ${CONF_DIR}/mongo.env
+    echo "MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASS}" >> ${CONF_DIR}/mongo.env
   fi
 fi
 if [ ! -f ${CONF_DIR}/postgres.env ]; then
