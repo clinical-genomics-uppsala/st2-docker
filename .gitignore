@@ -3,3 +3,4 @@ packs.dev
 *.pyc
 conf
 .idea
+secrets
