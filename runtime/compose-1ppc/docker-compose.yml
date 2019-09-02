@@ -2,7 +2,7 @@ version: '3'
 
 services:
   st2client: &base
-    image: stackstorm/stackstorm:${TAG:-latest}
+    image: stackstorm/stackstorm:${ST2_IMAGE_TAG:-latest}
     env_file:
       - conf/stackstorm.env
       - conf/mongo.env
@@ -41,6 +41,14 @@ services:
     <<: *base
     environment:
       - ST2_SERVICE=st2rulesengine
+  st2timersengine:
+    <<: *base
+    environment:
+      - ST2_SERVICE=st2timersengine
+  st2workflowengine:
+    <<: *base
+    environment:
+      - ST2_SERVICE=st2workflowengine
   st2actionrunner:
     <<: *base
     environment:
@@ -49,6 +57,10 @@ services:
     volumes:
       - stackstorm-packs:/opt/stackstorm/packs
       - stackstorm-virtualenvs:/opt/stackstorm/virtualenvs
+  st2scheduler:
+    <<: *base
+    environment:
+      - ST2_SERVICE=st2scheduler
   st2resultstracker:
     <<: *base
     environment:
